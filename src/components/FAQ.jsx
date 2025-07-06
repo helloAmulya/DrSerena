@@ -25,7 +25,8 @@ function FAQ() {
   };
 
   return (
-    <section className="w-full px-6 py-20 md:px-20 bg-gradient-to-bl from-[#121417] via-[#15191D] to-[#1A1D22] text-white">
+    <section className="w-full px-6 py-20 md:px-20 bg-gradient-to-bl from-[#121417] via-[#15191D] to-[#1A1D22] text-white"
+    id="faq">
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-14">FAQs</h2>
 

@@ -24,6 +24,7 @@ function HeroSection() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease: "easeOut", delay: 0.4 }}
+
       >
         <div
           className={`text-center max-w-3xl px-6 py-12 rounded-xl transition-all duration-500 ${

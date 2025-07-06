@@ -1,36 +1,38 @@
+
+
 import React from "react";
 import { motion } from "framer-motion";
-import { HeartPulse, Handshake, BrainCircuit, DollarSign, Users } from "lucide-react";
+import { DollarSign, Users } from "lucide-react";
+
+import anxietyStressImg from "../assets/anxiety-stress.jpg";
+import traumaRecoveryImg from "../assets/trauma-recovery.jpeg";
+import sceneryBg from "../assets/scenryBg.jpg";
 
 const services = [
   {
-    icon: <HeartPulse size={28} className="text-emerald-400" />,
+    image: anxietyStressImg,
     title: "Anxiety & Stress Management",
-    desc: "Helping you regulate emotions and develop coping strategies for anxiety, panic, and stress-related disorders.",
-    bg: "/src/assets/blue-water.webp",
+    desc: "Supportive sessions to help you manage panic, overthinking, burnout, and chronic stress through practical tools and mindfulness.",
   },
   {
-    icon: <Handshake size={28} className="text-emerald-400" />,
     title: "Relationship Counseling",
-    desc: "For couples and individuals seeking to improve communication, rebuild trust, and navigate emotional challenges.",
-    bg: "/src/assets/abstract-pastel.avif",
+    desc: "For couples and individuals navigating communication issues, trust, emotional disconnection, or transitions in relationships.",
   },
   {
-    icon: <BrainCircuit size={28} className="text-emerald-400" />,
+    image: traumaRecoveryImg,
     title: "Trauma Recovery",
-    desc: "Providing evidence-based care for trauma, PTSD, and emotional recovery in a safe and supportive setting.",
-    bg: "/src/assets/soft-gradient.webp",
+    desc: "Safe, evidence-based care to help process trauma, PTSD, or difficult past experiences in a compassionate and structured setting.",
   },
 ];
 
 const fees = [
   {
-    icon: <DollarSign size={24} className="text-green-300" />,
+    icon: <DollarSign size={24} className="text-white" />,
     label: "Individual Session",
     amount: "$200 / session",
   },
   {
-    icon: <Users size={24} className="text-green-300" />,
+    icon: <Users size={24} className="text-white" />,
     label: "Couples Session",
     amount: "$240 / session",
   },
@@ -38,86 +40,98 @@ const fees = [
 
 function Services() {
   return (
-    <section className="w-full px-6 py-20 md:px-20 bg-[#131d35] text-white">
-      {/* Heading */}
-      <motion.div
-        className="text-center mb-14"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-3">Services & Specialties</h2>
-        <p className="text-white/70 text-[15px] max-w-xl mx-auto">
-          Compassionate, evidence-based care for emotional wellness and healing.
-        </p>
-      </motion.div>
+    <section className="relative w-full px-6 py-20 md:px-20 text-white overflow-hidden"
+    id="services">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={sceneryBg}
+          alt="Mountain scenery background"
+          className="w-full h-full object-cover brightness-[0.8]"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/30 to-black/20" />
+      </div>
 
-      {/* Services Section */}
-      <motion.div
-        className="grid md:grid-cols-3 gap-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
-      >
-        {services.map((service, idx) => (
-          <motion.div
-            key={idx}
-            className="relative p-6 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-lg transition-all duration-500 hover:scale-[1.03] hover:shadow-emerald-500/30 group overflow-hidden"
-            variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            {/* Blurred Background on Hover */}
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full"
-              style={{
-                backgroundImage: `url(${service.bg})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                filter: "blur(10px)",
-              }}
-            />
-            <div className="absolute inset-0 rounded-full bg-black/30 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-[1]" />
-            <div className="relative z-10 flex flex-col items-center text-center space-y-3">
-              {service.icon}
-              <h3 className="text-lg font-semibold">{service.title}</h3>
-              <p className="text-white/70 text-sm leading-relaxed">{service.desc}</p>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+      {/* Main Content */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">Services & Specialties</h2>
+          <p className="text-white/70 text-base md:text-[15px] max-w-xl mx-auto">
+            Professional support for emotional health, healing, and growth.
+          </p>
+        </motion.div>
 
-      {/* Session Fees Section */}
-      <motion.div
-        className="mt-16 text-center"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <h3 className="text-2xl font-semibold mb-6">Session Fees</h3>
-        <div className="flex flex-col md:flex-row gap-6 justify-center">
-          {fees.map((fee, idx) => (
-            <div
+        {/* Services Grid */}
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
+        >
+          {services.map((service, idx) => (
+            <motion.div
               key={idx}
-              className="flex items-center gap-3 p-5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-sm hover:shadow-green-500/20 transition"
+              className="bg-white/20 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+              variants={{ hidden: { opacity: 0, y: 40 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              {fee.icon}
-              <div className="text-left">
-                <p className="text-sm font-medium">{fee.label}</p>
-                <p className="text-white/60 text-sm">{fee.amount}</p>
+              {service.image && (
+                <div className="h-48 w-full overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover object-center"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              <div className="p-6 space-y-3">
+                <h3 className="text-xl font-semibold">{service.title}</h3>
+                <p className="text-white/70 text-sm leading-relaxed">{service.desc}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
+
+        {/* Session Fees */}
+        <motion.div
+          className="mt-20 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h3 className="text-2xl md:text-3xl font-semibold mb-8">Session Fees</h3>
+          <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            {fees.map((fee, idx) => (
+              <motion.div
+                key={idx}
+                className="flex items-center gap-4 p-5 rounded-xl bg-[#0F172A]/90 border border-white/20 shadow-sm hover:shadow-md transition-all duration-300"
+                whileHover={{ y: -4 }}
+              >
+                <div className="flex-shrink-0 bg-white/10 p-3 rounded-full">
+                  {fee.icon}
+                </div>
+                <div className="text-left">
+                  <p className="text-base font-medium text-white">{fee.label}</p>
+                  <p className="text-lg font-semibold text-white">{fee.amount}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }
 
 export default Services;
-
-
-
-

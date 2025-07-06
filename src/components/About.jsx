@@ -27,7 +27,9 @@ function About() {
   };
 
   return (
-    <section className="w-full px-6 py-20 md:px-20 bg-[#0F172A] text-white">
+    <section className="w-full px-6 py-20 md:px-20 bg-[#0F172A] text-white"
+            id="about"
+>
       <motion.div
         className="flex flex-col md:flex-row gap-12 items-center justify-center"
         initial={{ opacity: 0, y: 60 }}
